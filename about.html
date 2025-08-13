@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>About Me:</title>
-    <link rel"stylesheet" href="style.css">
+  <title>About Me — My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-    <div id="navbar"></div>
-    <script>
-	fetch("navbar.html")
-	    .then(res => res.text())
-	    .then(data => {
-		document.getElementById("navbar").innerHTML = data;
-	    });
-    </script>
+<body id="top">
+
+  <div id="navbar"></div>
+  <script>
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar").innerHTML = html;
+
+        // Attach dropdown behavior AFTER navbar is in the DOM
+        const btn = document.querySelector('.dropbtn');
+        const menu = document.getElementById('more-menu');
+
+        function closeOnOutsideClick(e) {
+          if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            menu.classList.remove('show');
+            btn.setAttribute('aria-expanded', 'false');
+            document.removeEventListener('click', closeOnOutsideClick);
+          }
+        }
+
+        btn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          const open = menu.classList.toggle('show');
+          btn.setAttribute('aria-expanded', String(open));
+          if (open) document.addEventListener('click', closeOnOutsideClick);
+        });
+      });
+  </script>
+
+  <main class="page">
+    <h1>About Me</h1>
+    <p>Write a short bio here…</p>
+  </main>
+
 </body>
 </html>
