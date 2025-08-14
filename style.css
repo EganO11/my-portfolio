@@ -210,6 +210,12 @@ hr {
     padding-top: 0%;
 }
 
+.one-right-text-line-3 {
+    position: relative;
+    clear: left;
+    right: 50px;
+}
+
 /*Section two*/
 .section-two {
     font-size: 100%;
