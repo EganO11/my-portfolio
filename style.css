@@ -207,13 +207,14 @@ hr {
 .one-right-text-line-2 {
     position: relative;
     float: left;
+    left: 75px;
     padding-top: 0%;
 }
 
 .one-right-text-line-3 {
     position: relative;
     clear: left;
-    right: 50px;
+    right: 200px;
 }
 
 /*Section two*/
